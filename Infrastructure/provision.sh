@@ -5,6 +5,6 @@ wget -O- https://www.rabbitmq.com/rabbitmq-release-signing-key.asc | sudo apt-ke
 sudo apt-get update
 sudo DEBIAN_FRONTEND=noninteractive apt-get -y install rabbitmq-server
 rabbitmq-plugins enable rabbitmq_management
-echo '[{rabbit, [{loopback_users, []}]}].' > /etc/rabbitmq/rabbitmq.config
+echo '[{rabbit, [{loopback_users, []}]}].' | sudo tee /etc/rabbitmq/rabbitmq.config
 invoke-rc.d rabbitmq-server restart
 sudo apt-get install -y mongodb-org
