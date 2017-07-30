@@ -6,6 +6,7 @@
 
   It is a good idea to list the modules that your application depends on in the package.json in the project root
  */
+const Guid = require('guid')
 const defaultPipe = require('../helpers/defaultPipe')
 
 /*
@@ -14,22 +15,62 @@ const defaultPipe = require('../helpers/defaultPipe')
 const getStuff = (req, res) => {
   const pipeline = defaultPipe.getPipelineInstance(logicToGetStuff, (result) => {
     // This is executed at the end of the pipeline
-    res.json(result)
+    // Implementing asynchronous behaviour over REST: http://restcookbook.com/Resources/asynchroneous-operations/
+    res.set('Location', req.path + '/' + result.requestId)
+    res.status(202).end()
   })
   pipeline.execute(req)
-
 }
 
 const logicToGetStuff = (input, next) => {
-  //Send message on RabbitMQ
-  //Return endpoint to call to get final result
+  //TODO: Send message on RabbitMQ
 
+  //Return endpoint to call to get final result
   let error = null
   console.log('Logic to get stuff done.')
-  let output = 'done!'
+  let output = {
+    requestId: input.requestId
+  }
   next(error, output)
 }
 
+/*
+ * Get async result
+ */
+const getStuffById = (req, res) => {
+  const pipeline = defaultPipe.getPipelineInstance(tryRetrieveResult, (result) => {
+    if (result) {
+      res.json(result);
+    } else {
+      //Try again later
+      res.set('Location', req.path)
+      res.status(202).end()
+    }
+  })
+  pipeline.execute(req)  
+}
+
+const tryRetrieveResult = (input, next) => {
+  let error = null
+  //get and validate input
+  var userProvidedGUID = input.swagger.params.stuffId.value
+  userProvidedGUID = new Guid(userProvidedGUID)
+  if(Guid.isGuid(userProvidedGUID)) {
+
+    //Try get response from MongoDB
+    const output = 'StuffFromMongo!'
+
+    console.log('success!')
+    next(null, output)
+
+  } else {
+    console.error('Illegal request. Expected GUID.')
+    next(new Error('Illegal request.'), Pipeline.break)
+  }
+  
+}
+
 module.exports = {
-  getStuff
+  getStuff,
+  getStuffById
 }

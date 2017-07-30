@@ -8,9 +8,12 @@
   "license": "MIT",
   "main": "app.js",
   "dependencies": {
+    "config": "^1.26.1",
     "express": "^4.12.3",
+    "guid": "0.0.12",
+    "mongodb": "^2.2.30",
     "pipes-and-filters": "0.0.4",
-    "swagger-express-mw": "^0.1.0"
+    "swagger-express-mw": "^0.6.0"
   },
   "devDependencies": {
     "should": "^7.1.0",

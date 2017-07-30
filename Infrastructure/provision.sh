@@ -6,5 +6,8 @@ sudo apt-get update
 sudo DEBIAN_FRONTEND=noninteractive apt-get -y install rabbitmq-server
 rabbitmq-plugins enable rabbitmq_management
 echo '[{rabbit, [{loopback_users, []}]}].' | sudo tee /etc/rabbitmq/rabbitmq.config
-invoke-rc.d rabbitmq-server restart
+service rabbitmq-server restart
 sudo apt-get install -y mongodb-org
+
+head -n -18 /etc/mongod.conf > /etc/mongod.conf
+service mongod restart

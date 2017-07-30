@@ -1,38 +1,48 @@
 'use strict'
 
+const Guid = require('guid')
 const Pipeline = require('pipes-and-filters')
 
 const logRequestToAudit = (input, next) => {
+  /* TODO: implement */
+
   let error = null
+  input.requestId = Guid.raw();
   console.log('Log request to audit done')
   next(error, input)
 }
 
 const authenticateCall = (input, next) => {
+  /* TODO: implement */
+
   let error = null
   if (error) {
-    console.log('Authentication error. Aborting...')
+    console.error('Authentication error. Aborting...')
     next(null, Pipeline.break)
   } else {
-    let output = null
+    let output = input
     console.log('Authenticate call done')
     next(error, output)
   }
 }
 
 const authorizeCall = (input, next) => {
+  /* TODO: implement */
+
   let error = null
   if (error) {
-    console.log('Authorization error. Aborting...')
+    console.error('Authorization error. Aborting...')
     next(null, Pipeline.break)
   } else {
-    let output = null
+    let output = input
     console.log('Authorize call done')
     next(error, output)
   }
 }
 
 const logResponseToAudit = (input, next) => {
+  /* TODO: implement */
+
   let error = null
   console.log('Log response to audit call done')
   next(error, input)

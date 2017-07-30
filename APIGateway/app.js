@@ -1,10 +1,10 @@
 'use strict';
 
-var SwaggerExpress = require('swagger-express-mw');
-var app = require('express')();
-module.exports = app; // for testing
-
-var config = {
+const mongodb = require('./utilities/mongodb')
+const SwaggerExpress = require('swagger-express-mw');
+const app = require('express')();
+const port = process.env.PORT || 10010;
+const config = {
   appRoot: __dirname // required config
 };
 
@@ -14,7 +14,13 @@ SwaggerExpress.create(config, function(err, swaggerExpress) {
   // install middleware
   swaggerExpress.register(app);
 
-  var port = process.env.PORT || 10010;
-  app.listen(port);
-
+  mongodb.openConnection(err => {
+    if (!err) {
+      app.listen(port);
+    } else {
+      console.error(err)
+    }
+  }) 
 });
+
+module.exports = app; // for testing

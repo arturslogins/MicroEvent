@@ -17,6 +17,7 @@ consumes:
 # format of the responses to the client (Accepts)
 produces:
   - application/json
+  - text/plain
 paths:
   /swagger:
     x-swagger-pipe: swagger_raw
@@ -37,21 +38,43 @@ paths:
         default:
           description: Error
           schema:
-            $ref: "#/definitions/KeepAlive_ErrorResponse"
+            $ref: "#/definitions/Standard_ErrorResponse"
   /stuff:
     x-swagger-router-controller: stuff
     get:
-      description: Get suff. Example of business logic handling
+      description: Get suff. Example of async business logic handling
       operationId: getStuff
+      responses:
+        "202":
+          description: Success. Return empty response with header pointing at the location of the result when he async operation completes.
+          headers:
+            Location:
+              type: string
+              description: Relative path to the async operation result.
+        default:
+          description: Error
+          schema:
+            $ref: "#/definitions/Standard_ErrorResponse"
+  /stuff/{stuffId}:
+    x-swagger-router-controller: stuff
+    get:
+      description: Get suff by id. Example of async business logic handling
+      parameters:
+        - in: path
+          name: stuffId
+          type: string
+          required: true
+          description: GUID of the resource to get.
+      operationId: getStuffById
       responses:
         "200":
           description: Success
           schema:
-            $ref: "#/definitions/GetStuff_Response"
+            $ref: "#/definitions/GetStuffById_Response"
         default:
           description: Error
           schema:
-            $ref: "#/definitions/GetStuff_ErrorResponse"
+            $ref: "#/definitions/Standard_ErrorResponse"
 # complex objects have schema definitions
 definitions:
   # Keep Alive
@@ -61,20 +84,15 @@ definitions:
     properties:
       status:
         type: string
-  KeepAlive_ErrorResponse:
-    required:
-      - message
-    properties:
-      message:
-        type: string
   # Stuff sample
-  GetStuff_Response:
+  GetStuffById_Response:
     required:
       - stuff
     properties:
       stuff:
         type: string
-  GetStuff_ErrorResponse:
+  # Shared definitions
+  Standard_ErrorResponse:
     required:
       - message
     properties:
