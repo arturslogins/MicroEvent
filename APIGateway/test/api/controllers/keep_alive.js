@@ -18,7 +18,7 @@ describe('controllers', function() {
           .end(function(err, res) {
             should.not.exist(err)
 
-            res.body.should.eql('{"status":"OK"}')
+            res.body.should.eql({status:'OK'})
 
             done()
           })
