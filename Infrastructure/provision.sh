@@ -8,6 +8,6 @@ rabbitmq-plugins enable rabbitmq_management
 echo '[{rabbit, [{loopback_users, []}]}].' | sudo tee /etc/rabbitmq/rabbitmq.config
 service rabbitmq-server restart
 sudo apt-get install -y mongodb-org
-
-head -n -18 /etc/mongod.conf > /etc/mongod.conf
+mv /etc/mongod.conf /etc/mongod.old.conf
+head -n -18 /etc/mongod.old.conf | sudo tee /etc/mongod.conf
 service mongod restart
