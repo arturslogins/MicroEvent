@@ -1,0 +1,22 @@
+{
+  "name": "stuffms",
+  "version": "1.0.0",
+  "description": "Sample microservice containing very simple business logic",
+  "main": "src/app.js",
+  "scripts": {
+    "start": "node src/app.js",
+    "test": "mocha --require should --reporter spec --check-leaks"
+  },
+  "dependencies": {
+    "amqplib": "^0.5.1",
+    "config": "^1.26.1",
+    "js-yaml": "^3.9.1",
+    "q": "^1.5.0"
+  },
+  "devDependencies": {
+    "should": "^7.1.0",
+    "mocha": "~3.2.0"
+  },
+  "author": "Angelo Agatino Nicolosi",
+  "license": "MIT"
+}

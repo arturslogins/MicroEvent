@@ -1,0 +1,5 @@
+# StuffMS configuration file
+
+stuffms:
+  rabbitmq:
+    connectionString: 'amqp://localhost'
