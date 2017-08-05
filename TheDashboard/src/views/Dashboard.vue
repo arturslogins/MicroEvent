@@ -15,7 +15,7 @@
             <h4 class="mb-0">9.823</h4>
             <p>Users on Tax System</p>
           </div>
-          <card-line1-chart-example class="chart-wrapper px-3" style="height:70px;" height="70"/>
+          <TaxSystemChart class="chart-wrapper px-3" style="height:70px;" height="70"/>
         </div>
       </div><!--/.col-->
 
@@ -33,7 +33,7 @@
             <h4 class="mb-0">9.823</h4>
             <p>Users on Government sites</p>
           </div>
-          <card-line2-chart-example class="chart-wrapper px-3" style="height:70px;" height="70"/>
+          <GovernmentChart class="chart-wrapper px-3" style="height:70px;" height="70"/>
         </div>
       </div><!--/.col-->
 
@@ -53,7 +53,7 @@
             <h4 class="mb-0">9.823</h4>
             <p>Users on National News Agency</p>
           </div>
-          <card-line3-chart-example class="chart-wrapper" style="height:70px;" height="70"/>
+          <NationalNewsChart class="chart-wrapper" style="height:70px;" height="70"/>
         </div>
       </div><!--/.col-->
 
@@ -73,7 +73,7 @@
             <h4 class="mb-0">9.823</h4>
             <p>Overall Errors</p>
           </div>
-          <card-bar-chart-example class="chart-wrapper px-3" style="height:70px;" height="70"/>
+          <ErrorsChart class="chart-wrapper px-3" style="height:70px;" height="70"/>
         </div>
       </div><!--/.col-->
     </div><!--/.row-->
@@ -91,7 +91,7 @@
             </div>
           </div><!--/.col-->
         </div><!--/.row-->
-        <main-chart-example class="chart-wrapper" style="height:300px;margin-top:40px;" height="300"></main-chart-example>
+        <TrafficChart class="chart-wrapper" style="height:300px;margin-top:40px;" height="300"/>
       </div>
       <div class="card-footer">
         <ul>
@@ -139,7 +139,7 @@
         <div class="social-box facebook">
           <i class="fa fa-facebook"></i>
           <div class="chart-wrapper">
-            <social-box-chart-example :data="[65, 59, 84, 84, 51, 55, 40]" height="90"/>
+            <SocialBoxChart :data="[65, 59, 84, 84, 51, 55, 40]" height="90"/>
           </div>
           <ul>
             <li>
@@ -158,7 +158,7 @@
         <div class="social-box twitter">
           <i class="fa fa-twitter"></i>
           <div class="chart-wrapper">
-            <social-box-chart-example :data="[1, 13, 9, 17, 34, 41, 38]" height="90"/>
+            <SocialBoxChart :data="[1, 13, 9, 17, 34, 41, 38]" height="90"/>
           </div>
           <ul>
             <li>
@@ -178,7 +178,7 @@
         <div class="social-box linkedin">
           <i class="fa fa-linkedin"></i>
           <div class="chart-wrapper">
-            <social-box-chart-example :data="[78, 81, 80, 45, 34, 12, 40]" height="90"/>
+            <SocialBoxChart :data="[78, 81, 80, 45, 34, 12, 40]" height="90"/>
           </div>
           <ul>
             <li>
@@ -197,7 +197,7 @@
         <div class="social-box google-plus">
           <i class="fa fa-google-plus"></i>
           <div class="chart-wrapper">
-            <social-box-chart-example :data="[35, 23, 56, 22, 97, 23, 64]" height="90"/>
+            <SocialBoxChart :data="[35, 23, 56, 22, 97, 23, 64]" height="90"/>
           </div>
           <ul>
             <li>
@@ -217,24 +217,24 @@
 </template>
 
 <script>
-import CardLine1ChartExample from './dashboard/CardLine1ChartExample'
-import CardLine2ChartExample from './dashboard/CardLine2ChartExample'
-import CardLine3ChartExample from './dashboard/CardLine3ChartExample'
-import CardBarChartExample from './dashboard/CardBarChartExample'
-import MainChartExample from './dashboard/MainChartExample'
-import SocialBoxChartExample from './dashboard/SocialBoxChartExample'
+import TaxSystemChart from './dashboard/TaxSystemChart'
+import GovernmentChart from './dashboard/GovernmentChart'
+import NationalNewsChart from './dashboard/NationalNewsChart'
+import ErrorsChart from './dashboard/ErrorsChart'
+import TrafficChart from './dashboard/TrafficChart'
+import SocialBoxChart from './dashboard/SocialBoxChart'
 
 import { dropdown } from 'vue-strap'
 
 export default {
   name: 'dashboard',
   components: {
-    CardLine1ChartExample,
-    CardLine2ChartExample,
-    CardLine3ChartExample,
-    CardBarChartExample,
-    MainChartExample,
-    SocialBoxChartExample,
+    TaxSystemChart,
+    GovernmentChart,
+    NationalNewsChart,
+    ErrorsChart,
+    TrafficChart,
+    SocialBoxChart,
     dropdown
   }
 }

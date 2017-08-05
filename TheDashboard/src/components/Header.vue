@@ -51,11 +51,9 @@ export default {
     navbar,
     dropdown
   },
-
   created () {
     this.$store.dispatch('fetchStuffSample')
   },
-
   methods: {
     click () {
       // do nothing

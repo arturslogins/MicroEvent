@@ -75,6 +75,42 @@ paths:
           description: Error
           schema:
             $ref: "#/definitions/Standard_ErrorResponse"
+  /userbehaviour:
+    x-swagger-router-controller: business_data
+    get:
+      description: Get businessdata
+      operationId: getUserBehaviourStatistics
+      responses:
+        "202":
+          description: Success. Return empty response with header pointing at the location of the result when he async operation completes.
+          headers:
+            Location:
+              type: string
+              description: Relative path to the async operation result.
+        default:
+          description: Error
+          schema:
+            $ref: "#/definitions/Standard_ErrorResponse"
+  /userbehaviour/{userbehaviourId}:
+    x-swagger-router-controller: business_data
+    get:
+      description: Get BusinessData by id. Example of async business logic handling
+      parameters:
+        - in: path
+          name: userbehaviourId
+          type: string
+          required: true
+          description: GUID of the resource to get.
+      operationId: getUserBehaviourStatisticsById
+      responses:
+        "200":
+          description: Success
+          schema:
+            $ref: "#/definitions/GetUserBehaviourStatisticsById_Response"
+        default:
+          description: Error
+          schema:
+            $ref: "#/definitions/Standard_ErrorResponse"
 # complex objects have schema definitions
 definitions:
   # Keep Alive
@@ -91,6 +127,15 @@ definitions:
     properties:
       stuff:
         type: string
+  # BusinessData
+  GetUserBehaviourStatisticsById_Response:
+    required:
+      - overallErrors
+    properties:
+      overallErrors:
+        type: array
+        items:
+          type: integer
   # Shared definitions
   Standard_ErrorResponse:
     required:
