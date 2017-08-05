@@ -1,6 +1,7 @@
 const amqp = require('amqplib/callback_api')
 const config = require('config')
 const dbConfig = config.get('stuffms.rabbitmq')
+const moment = require('moment')
 const Q = require('q')
 
 const stuffExchangeName = 'stuffNeeded'
@@ -65,7 +66,7 @@ const openConnection = () => {
 // Invoked when a new message is received on the WorkDone Exchange
 const reactOnStuffNeededMessage = (msg) => {
   // fetch stuff. Usually this is not hardcodedm but let's keep things simple
-  const stuffRequested = 'This is your fantastic stuff from StuffMS!'
+  const stuffRequested = 'Latest news from StuffMS: It is ' + moment().format('LL') + ' and all is quite'
   console.log('Served request with id: ' + msg.properties.messageId)
 
   // send message with stuff value and the correct messageId

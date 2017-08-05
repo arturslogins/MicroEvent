@@ -6,6 +6,9 @@
       <li class="nav-item">
         <a class="nav-link navbar-toggler sidebar-toggler" href="#" @click="sidebarMinimize">&#9776;</a>
       </li>
+      <li class="nav-item">
+        {{stuffSample}}
+      </li>
     </ul>
     <ul class="nav navbar-nav ml-auto">
       <li class="nav-item d-md-down-none">
@@ -37,13 +40,22 @@
 
 import navbar from './Navbar'
 import { dropdown } from 'vue-strap'
+import { mapGetters } from 'vuex'
 
 export default {
   name: 'header',
+  computed: mapGetters({
+    stuffSample: 'stuffSample'
+  }),
   components: {
     navbar,
     dropdown
   },
+
+  created () {
+    this.$store.dispatch('fetchStuffSample')
+  },
+
   methods: {
     click () {
       // do nothing

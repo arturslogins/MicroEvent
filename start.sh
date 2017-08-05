@@ -5,7 +5,7 @@ set -e
 cd Infrastructure && vagrant up && cd ..
 cd APIGateway && npm install && npm test && cd ..
 cd StuffMS && npm install && npm test && cd ..
-cd TheDashboard && npm install && cd ..
+cd TheDashboard && npm install && npm test && cd ..
 
 trap 'kill %1; kill %2' SIGINT
 

@@ -24,6 +24,7 @@ const getStuff = (req, res) => {
     }
 
     res.set('Location', req.path + '/' + result.requestId)
+    res.set('Access-Control-Expose-Headers', 'Location')
     res.status(202).end()
   })
   pipeline.execute(req)
@@ -57,6 +58,7 @@ const getStuffById = (req, res) => {
     } else {
       //Try again later
       res.set('Location', req.path)
+      res.set('Access-Control-Expose-Headers', 'Location')
       res.status(202).end()
     }
   })
