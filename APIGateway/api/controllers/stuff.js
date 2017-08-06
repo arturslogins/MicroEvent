@@ -8,7 +8,9 @@
  */
 const mongodb = require('../../utilities/mongodb')
 const rabbitmq = require('../../utilities/rabbitmq')
+const genericUtils = require('../../utilities/generic')
 const asyncHelpers = require('../helpers/async')
+const Pipeline = require('pipes-and-filters')
 
 /*
  * Get stuff from our backend business microservice
@@ -40,10 +42,10 @@ const getStuffById = (req, res) => {
 const tryRetrieveResult = (input, next) => {
   let error = null
   //get and validate input
-  var userProvidedGUID = input.swagger.params.stuffId.value
-  if (/^[a-fA-F0-9]{8}-[a-fA-F0-9]{4}-4{1}[a-fA-F0-9]{3}-[89abAB]{1}[a-fA-F0-9]{3}-[a-fA-F0-9]{12}$/.test(userProvidedGUID)) {
+  var userProvidedUUID = input.swagger.params.stuffId.value
+  if (genericUtils.isCorrectUUID(userProvidedUUID)) {
     //Try get response from MongoDB
-    mongodb.tryGetWorkDone(userProvidedGUID).then(replies => {
+    mongodb.tryGetWorkDone(userProvidedUUID).then(replies => {
       if (!replies || replies.length == 0) {
         console.log('Nothing found with that specific requestId... yet.')
         next(null, null)

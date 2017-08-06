@@ -2,7 +2,9 @@
 
 const mongodb = require('../../utilities/mongodb')
 const rabbitmq = require('../../utilities/rabbitmq')
+const genericUtils = require('../../utilities/generic')
 const asyncHelpers = require('../helpers/async')
+const Pipeline = require('pipes-and-filters')
 
 /*
  * Get business data from our backend business microservice
@@ -30,8 +32,8 @@ const getUserBehaviourStatisticsById = (req, res) => {
 const tryRetrieveResult = (input, next) => {
   let error = null
   //get and validate input
-  var userProvidedGUID = input.swagger.params.userbehaviourId.value
-  if (/^[a-fA-F0-9]{8}-[a-fA-F0-9]{4}-4{1}[a-fA-F0-9]{3}-[89abAB]{1}[a-fA-F0-9]{3}-[a-fA-F0-9]{12}$/.test(userProvidedGUID)) {
+  var userProvidedUUID = input.swagger.params.userbehaviourId.value
+  if (genericUtils.isCorrectUUID(userProvidedUUID)) {
 
     /////////////////////////////////////////
     // TODO: Try get response from MongoDB //
