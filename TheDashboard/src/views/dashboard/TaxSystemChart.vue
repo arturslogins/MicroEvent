@@ -1,14 +1,10 @@
 <script>
 import { Line } from 'vue-chartjs'
-import { mapGetters } from 'vuex'
 
 const brandPrimary = '#20a8d8'
 
 export default Line.extend({
-  props: ['height'],
-  computed: mapGetters({
-    taxSystemStats: 'taxSystemStats'
-  }),
+  props: ['height', 'taxSystemStats'],
   data () {
     return {
       receivedDataFirstTime: false
@@ -24,7 +20,6 @@ export default Line.extend({
       } else {
         this.render(values, 1000)
       }
-
       if (values.data.length > 0) {
         this.receivedDataFirstTime = true
       }

@@ -1,72 +1,35 @@
 <template>
   <div class="animated fadeIn">
     <div class="row">
-      <div class="col-sm-12 col-md-12">
-        <div class="card card-accent-primary">
-          <div class="card-header">
-            Card with accent
-          </div>
-          <div class="card-block">
-            Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat.
-          </div>
-        </div>
-      </div><!--/.col-->
-      <div class="col-sm-12 col-md-12">
-        <div class="card card-accent-secondary">
-          <div class="card-header">
-            Card with accent
-          </div>
-          <div class="card-block">
-            Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat.
-          </div>
-        </div>
-      </div><!--/.col-->
-      <div class="col-sm-12 col-md-12">
-        <div class="card card-accent-success">
-          <div class="card-header">
-            Card with accent
-          </div>
-          <div class="card-block">
-            Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat.
-          </div>
-        </div>
-      </div><!--/.col-->
-      <div class="col-sm-12 col-md-12">
-        <div class="card card-accent-info">
-          <div class="card-header">
-            Card with accent
-          </div>
-          <div class="card-block">
-            Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat.
-          </div>
-        </div>
-      </div><!--/.col-->
-      <div class="col-sm-12 col-md-12">
-        <div class="card card-accent-warning">
-          <div class="card-header">
-            Card with accent
-          </div>
-          <div class="card-block">
-            Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat.
-          </div>
-        </div>
-      </div><!--/.col-->
-      <div class="col-sm-12 col-md-12">
-        <div class="card card-accent-danger">
-          <div class="card-header">
-            Card with accent
-          </div>
-          <div class="card-block">
-            Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat.
-          </div>
-        </div>
-      </div><!--/.col-->
+      <LogEntry v-for="log in logs" :logEntry="log" :key="log.id"/>
     </div><!--/.row-->
   </div>
 </template>
 
 <script>
+import LogEntry from './logs/LogEntry'
+import { mapGetters } from 'vuex'
+
 export default {
-  name: 'cards'
+  name: 'cards',
+  components: {
+    LogEntry
+  },
+  computed: {
+    ...mapGetters({
+      logs: 'logs'
+    })
+  },
+  created () {
+    this.$store.dispatch('fetchLogs')
+    this.interval = setInterval(() => {
+      this.$store.dispatch('fetchLogs')
+    }, 3000)
+  }
 }
+/* eslint-disable */
+//////////////////////////////////////////////////////
+// TODO: Add functionality to fetch older log pages //
+//////////////////////////////////////////////////////
+/* eslint-enable */
 </script>

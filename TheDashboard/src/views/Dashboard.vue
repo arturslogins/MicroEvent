@@ -12,10 +12,10 @@
                 <a class="dropdown-item" href="#">Something else here</a>
               </div>
             </dropdown>
-            <h4 class="mb-0">9.823</h4>
+            <h4 class="mb-0">{{taxSystemStatsTotal}}</h4>
             <p>Users on Tax System</p>
           </div>
-          <TaxSystemChart class="chart-wrapper px-3" style="height:70px;" height="70"/>
+          <TaxSystemChart class="chart-wrapper px-3" style="height:70px;" height="70" :taxSystemStats="taxSystemStats"/>
         </div>
       </div><!--/.col-->
 
@@ -30,10 +30,10 @@
                 <a class="dropdown-item" href="#">Something else here</a>
               </div>
             </dropdown>
-            <h4 class="mb-0">9.823</h4>
+            <h4 class="mb-0">{{governmentStatsTotal}}</h4>
             <p>Users on Government sites</p>
           </div>
-          <GovernmentChart class="chart-wrapper px-3" style="height:70px;" height="70"/>
+          <GovernmentChart class="chart-wrapper px-3" style="height:70px;" height="70" :governmentStats="governmentStats"/>
         </div>
       </div><!--/.col-->
 
@@ -50,10 +50,10 @@
                 </div>
               </dropdown>
             </div>
-            <h4 class="mb-0">9.823</h4>
+            <h4 class="mb-0">{{nationalNewsStatsTotal}}</h4>
             <p>Users on National News Agency</p>
           </div>
-          <NationalNewsChart class="chart-wrapper" style="height:70px;" height="70"/>
+          <NationalNewsChart class="chart-wrapper" style="height:70px;" height="70" :nationalNewsStats="nationalNewsStats"/>
         </div>
       </div><!--/.col-->
 
@@ -70,10 +70,10 @@
                 </div>
               </dropdown>
             </div>
-            <h4 class="mb-0">9.823</h4>
+            <h4 class="mb-0">{{overallErrorsTotal}}</h4>
             <p>Overall Errors</p>
           </div>
-          <ErrorsChart class="chart-wrapper px-3" style="height:70px;" height="70"/>
+          <ErrorsChart class="chart-wrapper px-3" style="height:70px;" height="70" :overallErrors="overallErrors"/>
         </div>
       </div><!--/.col-->
     </div><!--/.row-->
@@ -223,8 +223,19 @@ import NationalNewsChart from './dashboard/NationalNewsChart'
 import ErrorsChart from './dashboard/ErrorsChart'
 import TrafficChart from './dashboard/TrafficChart'
 import SocialBoxChart from './dashboard/SocialBoxChart'
+import { mapGetters } from 'vuex'
 
 import { dropdown } from 'vue-strap'
+
+const calculateSumOfDataArray = (stateObject) => {
+  if (stateObject && stateObject.data) {
+    return stateObject.data.reduce((previous, current) => {
+      return previous + current
+    }, 0)
+  } else {
+    return 'N/A'
+  }
+}
 
 export default {
   name: 'dashboard',
@@ -237,6 +248,18 @@ export default {
     SocialBoxChart,
     dropdown
   },
+  computed: {
+    ...mapGetters({
+      taxSystemStats: 'taxSystemStats',
+      nationalNewsStats: 'nationalNewsStats',
+      governmentStats: 'governmentStats',
+      overallErrors: 'overallErrors'
+    }),
+    taxSystemStatsTotal: function () { return calculateSumOfDataArray(this.taxSystemStats) },
+    nationalNewsStatsTotal: function () { return calculateSumOfDataArray(this.nationalNewsStats) },
+    governmentStatsTotal: function () { return calculateSumOfDataArray(this.governmentStats) },
+    overallErrorsTotal: function () { return calculateSumOfDataArray(this.overallErrors) }
+  },
   data () {
     return {
       interval: null
@@ -246,7 +269,7 @@ export default {
     this.$store.dispatch('fetchStatisticsData')
     this.interval = setInterval(() => {
       this.$store.dispatch('fetchStatisticsData')
-    }, 5000)
+    }, 3000)
   },
   destroyed () {
     if (this.interval) {
@@ -254,4 +277,9 @@ export default {
     }
   }
 }
+/* eslint-disable */
+///////////////////////////////////////////////
+// TODO: Wire data to the remaining controls //
+///////////////////////////////////////////////
+/* eslint-enable */
 </script>

@@ -1,12 +1,8 @@
 <script>
 import { Bar } from 'vue-chartjs'
-import { mapGetters } from 'vuex'
 
 export default Bar.extend({
-  props: ['height'],
-  computed: mapGetters({
-    overallErrors: 'overallErrors'
-  }),
+  props: ['height', 'overallErrors'],
   data () {
     return {
       receivedDataFirstTime: false

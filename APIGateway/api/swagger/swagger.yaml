@@ -111,6 +111,53 @@ paths:
           description: Error
           schema:
             $ref: "#/definitions/Standard_ErrorResponse"
+  /logs/{pageNumber}:
+    x-swagger-router-controller: logs
+    get:
+      description: Get logs
+      parameters:
+        - in: path
+          name: pageNumber
+          type: integer
+          required: true
+          description: Number of the page of logs requested.
+      operationId: getLogsByPage
+      responses:
+        "202":
+          description: Success. Return empty response with header pointing at the location of the result when he async operation completes.
+          headers:
+            Location:
+              type: string
+              description: Relative path to the async operation result.
+        default:
+          description: Error
+          schema:
+            $ref: "#/definitions/Standard_ErrorResponse"
+  /logs/{pageNumber}/{logRequestId}:
+    x-swagger-router-controller: logs
+    get:
+      description: Get logs by id. Example of async business logic handling
+      parameters:
+        - in: path
+          name: pageNumber
+          type: integer
+          required: true
+          description: Number of the page of logs requested.
+        - in: path
+          name: logRequestId
+          type: string
+          required: true
+          description: GUID of the resource to get.
+      operationId: getLogsPageById
+      responses:
+        "200":
+          description: Success
+          schema:
+            $ref: "#/definitions/GetLogsPageById_Response"
+        default:
+          description: Error
+          schema:
+            $ref: "#/definitions/Standard_ErrorResponse"
 # complex objects have schema definitions
 definitions:
   # Keep Alive
@@ -131,11 +178,59 @@ definitions:
   GetUserBehaviourStatisticsById_Response:
     required:
       - overallErrors
+      - governmentStats
+      - nationalNewsStats
+      - taxSystemStats
     properties:
       overallErrors:
+        $ref: "#/definitions/Statistic_Object"
+      governmentStats:
+        $ref: "#/definitions/Statistic_Object"
+      nationalNewsStats:
+        $ref: "#/definitions/Statistic_Object"
+      taxSystemStats:
+        $ref: "#/definitions/Statistic_Object"
+  Statistic_Object:
+    required:
+      - labels
+      - data
+    properties:
+      labels:
+        type: array
+        items:
+          type: string
+      data:
         type: array
         items:
           type: integer
+  # Logs
+  GetLogsPageById_Response:
+    required:
+      - logs
+    properties:
+      logs:
+        type: array
+        items:
+          $ref: "#/definitions/Log_Object"
+  Log_Object:
+    required:
+      - id
+      - logLevel
+      - timestamp
+      - location
+      - contents
+    properties:
+      id:
+        type: string
+      logLevel:
+        type: string
+      timestamp:
+        type: string
+        format: date-time
+      location:
+        type: string
+      contents:
+        type: string
   # Shared definitions
   Standard_ErrorResponse:
     required:

@@ -1,14 +1,10 @@
 <script>
 import { Line } from 'vue-chartjs'
-import { mapGetters } from 'vuex'
 
 const brandInfo = '#63c2de'
 
 export default Line.extend({
-  props: ['height'],
-  computed: mapGetters({
-    governmentStats: 'governmentStats'
-  }),
+  props: ['height', 'governmentStats'],
   mounted () {
     this.render(this.governmentStats, 1000)
   },

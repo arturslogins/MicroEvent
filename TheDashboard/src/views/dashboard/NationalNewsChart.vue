@@ -1,12 +1,8 @@
 <script>
 import { Line } from 'vue-chartjs'
-import { mapGetters } from 'vuex'
 
 export default Line.extend({
-  props: ['height'],
-  computed: mapGetters({
-    nationalNewsStats: 'nationalNewsStats'
-  }),
+  props: ['height', 'nationalNewsStats'],
   data () {
     return {
       receivedDataFirstTime: false
