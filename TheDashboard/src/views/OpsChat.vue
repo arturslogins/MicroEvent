@@ -239,3 +239,18 @@
     </table>
   </div>
 </template>
+
+<script>
+/* eslint-disable */
+//////////////////////////////////////////////////////
+// TODO: Add code to                                //
+//   - fetch lastest chat messages (paginated)      //
+//   - send messages to the common room             //
+//   - notify user of the different message states: //
+//     - 202 = Committed locally                    //
+//     - 200 = Committed remotely                   //
+//////////////////////////////////////////////////////
+/* eslint-enable */
+export default {
+}
+</script>

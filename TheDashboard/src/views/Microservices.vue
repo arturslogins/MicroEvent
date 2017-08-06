@@ -40,3 +40,13 @@
     </div><!--/.row-->
 </div>
 </template>
+
+<script>
+/* eslint-disable */
+/////////////////////////////////////////////////////////////
+// TODO: Add code to fetch and show monitoring information //
+/////////////////////////////////////////////////////////////
+/* eslint-enable */
+export default {
+}
+</script>
