@@ -3,16 +3,18 @@
     <table class="table table-hover table-outline mb-0">
       <thead class="thead-default">
         <tr>
+          <th class="text-center">Country</th>
           <th class="text-center"><i class="icon-people"></i></th>
           <th>User</th>
-          <th class="text-center">Country</th>
-          <th>Usage</th>
-          <th class="text-center">Payment Method</th>
-          <th>Activity</th>
+          <th>Message</th>
+          <th>Timestamp</th>
         </tr>
       </thead>
       <tbody>
         <tr>
+          <td class="text-center">
+            <img src="static/img/flags/USA.png" alt="USA" style="height:24px;">
+          </td>
           <td class="text-center">
             <div class="avatar">
               <img src="static/img/avatars/1.jpg" class="img-avatar" alt="admin@bootstrapmaster.com">
@@ -22,34 +24,20 @@
           <td>
             <div>Yiorgos Avraamu</div>
             <div class="small text-muted">
-              <span>New</span> | Registered: Jan 1, 2015
+              <span>Ops Ninja</span> | Registered: Jan 1, 2015
             </div>
-          </td>
-          <td class="text-center">
-            <img src="static/img/flags/USA.png" alt="USA" style="height:24px;">
           </td>
           <td>
-            <div class="clearfix">
-              <div class="float-left">
-                <strong>50%</strong>
-              </div>
-              <div class="float-right">
-                <small class="text-muted">Jun 11, 2015 - Jul 10, 2015</small>
-              </div>
-            </div>
-            <div class="progress progress-xs">
-              <div class="progress-bar bg-success" role="progressbar" style="width: 50%" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100"></div>
-            </div>
-          </td>
-          <td class="text-center">
-            <i class="fa fa-cc-mastercard" style="font-size:24px"></i>
+            Message
           </td>
           <td>
-            <div class="small text-muted">Last login</div>
-            <strong>10 sec ago</strong>
+            <span>2017-08-11T12:11:10Z</span>
           </td>
         </tr>
         <tr>
+          <td class="text-center">
+            <img src="static/img/flags/Brazil.png" alt="Brazil" style="height:24px;">
+          </td>
           <td class="text-center">
             <div class="avatar">
               <img src="static/img/avatars/2.jpg" class="img-avatar" alt="admin@bootstrapmaster.com">
@@ -60,34 +48,20 @@
             <div>Avram Tarasios</div>
             <div class="small text-muted">
 
-              <span>Recurring</span> | Registered: Jan 1, 2015
+              <span>Team Lead</span> | Registered: Jan 1, 2015
             </div>
-          </td>
-          <td class="text-center">
-            <img src="static/img/flags/Brazil.png" alt="Brazil" style="height:24px;">
           </td>
           <td>
-            <div class="clearfix">
-              <div class="float-left">
-                <strong>10%</strong>
-              </div>
-              <div class="float-right">
-                <small class="text-muted">Jun 11, 2015 - Jul 10, 2015</small>
-              </div>
-            </div>
-            <div class="progress progress-xs">
-              <div class="progress-bar bg-info" role="progressbar" style="width: 10%" aria-valuenow="10" aria-valuemin="0" aria-valuemax="100"></div>
-            </div>
-          </td>
-          <td class="text-center">
-            <i class="fa fa-cc-visa" style="font-size:24px"></i>
+            Message
           </td>
           <td>
-            <div class="small text-muted">Last login</div>
-            <strong>5 minutes ago</strong>
+            <span>2017-08-11T12:11:10Z</span>
           </td>
         </tr>
         <tr>
+          <td class="text-center">
+            <img src="static/img/flags/India.png" alt="India" style="height:24px;">
+          </td>
           <td class="text-center">
             <div class="avatar">
               <img src="static/img/avatars/3.jpg" class="img-avatar" alt="admin@bootstrapmaster.com">
@@ -97,34 +71,20 @@
           <td>
             <div>Quintin Ed</div>
             <div class="small text-muted">
-              <span>New</span> | Registered: Jan 1, 2015
+              <span>Padawan</span> | Registered: Jan 1, 2015
             </div>
-          </td>
-          <td class="text-center">
-            <img src="static/img/flags/India.png" alt="India" style="height:24px;">
           </td>
           <td>
-            <div class="clearfix">
-              <div class="float-left">
-                <strong>74%</strong>
-              </div>
-              <div class="float-right">
-                <small class="text-muted">Jun 11, 2015 - Jul 10, 2015</small>
-              </div>
-            </div>
-            <div class="progress progress-xs">
-              <div class="progress-bar bg-warning" role="progressbar" style="width: 74%" aria-valuenow="74" aria-valuemin="0" aria-valuemax="100"></div>
-            </div>
-          </td>
-          <td class="text-center">
-            <i class="fa fa-cc-stripe" style="font-size:24px"></i>
+            Message
           </td>
           <td>
-            <div class="small text-muted">Last login</div>
-            <strong>1 hour ago</strong>
+            <span>2017-08-11T12:11:10Z</span>
           </td>
         </tr>
         <tr>
+          <td class="text-center">
+            <img src="static/img/flags/France.png" alt="France" style="height:24px;">
+          </td>
           <td class="text-center">
             <div class="avatar">
               <img src="static/img/avatars/4.jpg" class="img-avatar" alt="admin@bootstrapmaster.com">
@@ -134,34 +94,20 @@
           <td>
             <div>Enéas Kwadwo</div>
             <div class="small text-muted">
-              <span>New</span> | Registered: Jan 1, 2015
+              <span>Super Jedi</span> | Registered: Jan 1, 2015
             </div>
-          </td>
-          <td class="text-center">
-            <img src="static/img/flags/France.png" alt="France" style="height:24px;">
           </td>
           <td>
-            <div class="clearfix">
-              <div class="float-left">
-                <strong>98%</strong>
-              </div>
-              <div class="float-right">
-                <small class="text-muted">Jun 11, 2015 - Jul 10, 2015</small>
-              </div>
-            </div>
-            <div class="progress progress-xs">
-              <div class="progress-bar bg-danger" role="progressbar" style="width: 98%" aria-valuenow="98" aria-valuemin="0" aria-valuemax="100"></div>
-            </div>
-          </td>
-          <td class="text-center">
-            <i class="fa fa-paypal" style="font-size:24px"></i>
+            Message
           </td>
           <td>
-            <div class="small text-muted">Last login</div>
-            <strong>Last month</strong>
+            <span>2017-08-11T12:11:10Z</span>
           </td>
         </tr>
         <tr>
+          <td class="text-center">
+            <img src="static/img/flags/Spain.png" alt="Spain" style="height:24px;">
+          </td>
           <td class="text-center">
             <div class="avatar">
               <img src="static/img/avatars/5.jpg" class="img-avatar" alt="admin@bootstrapmaster.com">
@@ -171,34 +117,20 @@
           <td>
             <div>Agapetus Tadeáš</div>
             <div class="small text-muted">
-              <span>New</span> | Registered: Jan 1, 2015
+              <span>Admiral</span> | Registered: Jan 1, 2015
             </div>
-          </td>
-          <td class="text-center">
-            <img src="static/img/flags/Spain.png" alt="Spain" style="height:24px;">
           </td>
           <td>
-            <div class="clearfix">
-              <div class="float-left">
-                <strong>22%</strong>
-              </div>
-              <div class="float-right">
-                <small class="text-muted">Jun 11, 2015 - Jul 10, 2015</small>
-              </div>
-            </div>
-            <div class="progress progress-xs">
-              <div class="progress-bar bg-info" role="progressbar" style="width: 22%" aria-valuenow="22" aria-valuemin="0" aria-valuemax="100"></div>
-            </div>
-          </td>
-          <td class="text-center">
-            <i class="fa fa-google-wallet" style="font-size:24px"></i>
+            Message
           </td>
           <td>
-            <div class="small text-muted">Last login</div>
-            <strong>Last week</strong>
+            <span>2017-08-11T12:11:10Z</span>
           </td>
         </tr>
         <tr>
+          <td class="text-center">
+            <img src="static/img/flags/Poland.png" alt="Poland" style="height:24px;">
+          </td>
           <td class="text-center">
             <div class="avatar">
               <img src="static/img/avatars/6.jpg" class="img-avatar" alt="admin@bootstrapmaster.com">
@@ -208,35 +140,25 @@
           <td>
             <div>Friderik Dávid</div>
             <div class="small text-muted">
-              <span>New</span> | Registered: Jan 1, 2015
+              <span>Master of the Ring</span> | Registered: Jan 1, 2015
             </div>
-          </td>
-          <td class="text-center">
-            <img src="static/img/flags/Poland.png" alt="Poland" style="height:24px;">
           </td>
           <td>
-            <div class="clearfix">
-              <div class="float-left">
-                <strong>43%</strong>
-              </div>
-              <div class="float-right">
-                <small class="text-muted">Jun 11, 2015 - Jul 10, 2015</small>
-              </div>
-            </div>
-            <div class="progress progress-xs">
-              <div class="progress-bar bg-success" role="progressbar" style="width: 43%" aria-valuenow="43" aria-valuemin="0" aria-valuemax="100"></div>
-            </div>
-          </td>
-          <td class="text-center">
-            <i class="fa fa-cc-amex" style="font-size:24px"></i>
+            Message
           </td>
           <td>
-            <div class="small text-muted">Last login</div>
-            <strong>Yesterday</strong>
+            <span>2017-08-11T12:11:10Z</span>
           </td>
         </tr>
       </tbody>
     </table>
+    <div class="input-prepend input-group">
+      <span class="input-group-addon"><i class="fa fa-envelope-o"></i></span>
+      <input id="prependedInput" class="form-control" size="16" type="text" placeholder="Send a new message">
+      <span class="input-group-btn">
+        <button class="btn btn-info" type="button">Send</button>
+      </span>
+    </div>
   </div>
 </template>
 

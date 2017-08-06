@@ -3,7 +3,7 @@
     <div :class="'card card-accent-' + logLevelToClassName(logEntry.logLevel)">
       <div class="card-header">
         <span :class="'badge float-right badge-' + logLevelToClassName(logEntry.logLevel)">{{logEntry.logLevel}}</span>
-        <span class="timestamp float-right"><i class="fa fa-clock-o"></i>{{logEntry.timestamp}}</span>
+        <span class="timestamp float-right text-muted"><i class="fa fa-clock-o"></i>{{logEntry.timestamp}}</span>
         <span class="location">{{logEntry.location}}</span>
       </div>
       <div class="card-block">
@@ -38,11 +38,9 @@ export default {
 .timestamp {
   margin-right: 20px;
   margin-top: -4px;
-  color: #999;
 }
 
 i {
   padding: 2px;
-  color: #999;
 }
 </style>
