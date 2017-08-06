@@ -1,45 +1,73 @@
 <script>
 import { Line } from 'vue-chartjs'
-
-const datasets = [
-  {
-    label: 'My First dataset',
-    backgroundColor: 'rgba(255,255,255,.2)',
-    borderColor: 'rgba(255,255,255,.55)',
-    data: [78, 81, 80, 45, 34, 12, 40]
-  }
-]
+import { mapGetters } from 'vuex'
 
 export default Line.extend({
   props: ['height'],
+  computed: mapGetters({
+    nationalNewsStats: 'nationalNewsStats'
+  }),
+  data () {
+    return {
+      receivedDataFirstTime: false
+    }
+  },
   mounted () {
-    this.renderChart({
-      labels: ['January', 'February', 'March', 'April', 'May', 'June', 'July'],
-      datasets: datasets
-    }, {
-      maintainAspectRatio: false,
-      legend: {
-        display: false
-      },
-      scales: {
-        xAxes: [{
-          display: false
-        }],
-        yAxes: [{
-          display: false
-        }]
-      },
-      elements: {
-        line: {
-          borderWidth: 2
-        },
-        point: {
-          radius: 0,
-          hitRadius: 10,
-          hoverRadius: 4
-        }
+    this.render(this.nationalNewsStats, 1000)
+  },
+  watch: {
+    nationalNewsStats: function (values) {
+      if (this.receivedDataFirstTime) {
+        this.render(values, 0)
+      } else {
+        this.render(values, 1000)
       }
-    })
+
+      if (values.data.length > 0) {
+        this.receivedDataFirstTime = true
+      }
+    }
+  },
+  methods: {
+    render (nationalNewsStats, durationAnimation) {
+      this.renderChart({
+        labels: nationalNewsStats.labels,
+        datasets: [
+          {
+            label: 'Users',
+            backgroundColor: 'rgba(255,255,255,.2)',
+            borderColor: 'rgba(255,255,255,.55)',
+            data: nationalNewsStats.data
+          }
+        ]
+      }, {
+        animation: {
+          duration: durationAnimation
+        },
+        maintainAspectRatio: false,
+        legend: {
+          display: false
+        },
+        scales: {
+          xAxes: [{
+            display: false
+          }],
+          yAxes: [{
+            display: false
+          }]
+        },
+        elements: {
+          line: {
+            borderWidth: 2
+          },
+          point: {
+            radius: 0,
+            hitRadius: 10,
+            hoverRadius: 4
+          }
+        }
+      })
+    }
   }
 })
 </script>

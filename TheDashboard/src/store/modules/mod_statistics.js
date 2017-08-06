@@ -3,16 +3,20 @@ import * as types from '../mutation-types'
 
 // initial state
 const state = {
-  usersStatistics: null,
   stuffSample: '',
-  overallErrors: []
+  overallErrors: [],
+  governmentStats: [],
+  nationalNewsStats: [],
+  taxSystemStats: []
 }
 
 // getters
 const getters = {
-  usersStatistics: state => state.usersStatistics,
   stuffSample: state => state.stuffSample,
-  overallErrors: state => state.overallErrors
+  overallErrors: state => state.overallErrors,
+  governmentStats: state => state.governmentStats,
+  nationalNewsStats: state => state.nationalNewsStats,
+  taxSystemStats: state => state.taxSystemStats
 }
 
 // actions
@@ -29,10 +33,10 @@ const actions = {
       console.error(err)
     })
   },
-  fetchOverallErrors ({ commit, state }) {
+  fetchStatisticsData ({ commit, state }) {
     businessDataAPIs.getUserBehaviourStatistics().then(response => {
       if (response.status === 200) {
-        commit(types.OVERALL_ERRORS_FETCHED, response.data)
+        commit(types.STATISTICS_DATA_FETCHED, response.data)
       } else {
         console.error('Received ' + response.status + ' from backend. Response object:')
         console.error(response)
@@ -48,8 +52,11 @@ const mutations = {
   [types.STUFF_SAMPLE_FETCHED] (state, stuffSample) {
     state.stuffSample = stuffSample
   },
-  [types.OVERALL_ERRORS_FETCHED] (state, userBehaviour) {
-    state.overallErrors = userBehaviour.overallErrors
+  [types.STATISTICS_DATA_FETCHED] (state, statisticsData) {
+    state.overallErrors = statisticsData.overallErrors
+    state.governmentStats = statisticsData.governmentStats
+    state.nationalNewsStats = statisticsData.nationalNewsStats
+    state.taxSystemStats = statisticsData.taxSystemStats
   }
 }
 

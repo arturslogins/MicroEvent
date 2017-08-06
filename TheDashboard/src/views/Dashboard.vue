@@ -236,6 +236,22 @@ export default {
     TrafficChart,
     SocialBoxChart,
     dropdown
+  },
+  data () {
+    return {
+      interval: null
+    }
+  },
+  created () {
+    this.$store.dispatch('fetchStatisticsData')
+    this.interval = setInterval(() => {
+      this.$store.dispatch('fetchStatisticsData')
+    }, 5000)
+  },
+  destroyed () {
+    if (this.interval) {
+      clearInterval(this.interval)
+    }
   }
 }
 </script>
