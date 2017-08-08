@@ -41,11 +41,19 @@ If you are instead running Windows you can run `./start.sh` from Git Bash (usual
 
 ## Challenges
 
-### Frontend development
+### Challenge Zero: Hello World of Microservices!
 
-### Microservice development
+### First Challenge: Real data
 
-### Security
+System resources usage + dashboard data
+
+### Second Challenge: Logs
+
+### Third Challenge: Monitoring
+
+### Third Challenge: On your own with OpsChat
+
+### Extra credits: Secure the system
 
 ## Tools and Libraries
 [draw.io](https://www.draw.io/)
