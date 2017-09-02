@@ -92,6 +92,8 @@ If you came this far you have the knowledge to get things done. No more hints wi
 
 In order to get you started, we have prepared as in the excercise before the [UI](https://github.com/DanskeBank/MicroEvent/blob/master/TheDashboard/src/views/Logs.vue), [its state handling](https://github.com/DanskeBank/MicroEvent/blob/master/TheDashboard/src/store/modules/mod_logs.js) and the basic APIs at the [API Gateway](https://github.com/DanskeBank/MicroEvent/blob/e766ac0454841dde453f2b94f41647fbefcd4ec6/APIGateway/api/swagger/swagger.yaml#L114).
 
+![Logs UI](./Docs/ChallengeTwo.png)
+
 However, you may agree with us that in a system like this there can be humongous amount of logs. We of course do not want to fetch them all at once, we may want to adopt an intelligent cache mechanism / algorithm, we may want to implement filters and maybe even search functionality.
 
 Or maybe not :smiley: Start implementing the basic requirements and keep it simple:
@@ -110,6 +112,8 @@ You need to monitor your system and you need to update ParsonsNet regularly on t
 
 The only thing done here is a [UI Mockup](https://github.com/DanskeBank/MicroEvent/blob/master/TheDashboard/src/views/Microservices.vue) in order to show more or less the expected outcome.
 
+![Monitoring UI](./Docs/ChallengeThree.png)
+
 You will need to:
 
 1. Modify the View in order to render dynamic data
@@ -123,7 +127,11 @@ You will need to:
 
 Of course all countries needs to cooperate. We want to build a chat system where anybody logged on on any specific local system are able to look at chat messages and post their own.
 
-We just created a (quite ugly) UI mockup of the chat. And that's it. You need to do the rest :stuck_out_tongue:
+We just created a (quite ugly) UI mockup of the chat.
+
+![Monitoring UI](./Docs/ChallengeFour.png)
+
+And that's it. You need to do the rest :stuck_out_tongue:
 
 1. Modify the View in order to make it nice and render dynamic data
 1. Create the Vuex module for this section of the frontend application (state handling)
