@@ -71,6 +71,7 @@ We have done that in order to help you out with the APIs definition, but this is
 Moreover, the rest of the page is completely static.
 
 ![StuffMS Message](./Docs/ChallengeOne2.png)
+
 ![StuffMS Message](./Docs/ChallengeOne3.png)
 
 In order to complete this challenge you should:
@@ -83,13 +84,15 @@ Do you need [some help](./Docs/Hints/ChallengeOne.md)?
 
 ### Second Challenge: Logs
 
-A best practice when developing microservice architecture it to have [centralized logging](http://www.vinaysahni.com/best-practices-for-building-a-microservice-architecture#logging)
+A best practice when developing microservice architecture is to have [centralized logging](http://www.vinaysahni.com/best-practices-for-building-a-microservice-architecture#logging)
 
 ### Third Challenge: Monitoring
 
 [Centralized monitoring](http://www.vinaysahni.com/best-practices-for-building-a-microservice-architecture#monitoring) is also among best practices for this architecture.
 
-### Third Challenge: On your own with OpsChat
+### Fourth Challenge: On your own with OpsChat
+
+Let's chat
 
 ### Extra credits: Secure the system
 
