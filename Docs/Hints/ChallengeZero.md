@@ -1,6 +1,8 @@
 # Hints for Challenge Zero
 
-1. On the [created hook](https://vuejs.org/v2/guide/instance.html#Lifecycle-Diagram) the [UI Component](https://github.com/DanskeBank/MicroEvent/blob/724edef9f3cbbe2cfa9bd654f219c73d611dcddb/TheDashboard/src/components/Header.vue#L55) try to fetch the StuffMS message value from the backend by invoking a specific action (fetchStuffSample)
+In the following we will describe in detail the call stack through the whole system that is performed when information from StuffMS is required.
+
+1. In the [created hook](https://vuejs.org/v2/guide/instance.html#Lifecycle-Diagram) the [UI Component](https://github.com/DanskeBank/MicroEvent/blob/724edef9f3cbbe2cfa9bd654f219c73d611dcddb/TheDashboard/src/components/Header.vue#L55) try to fetch the StuffMS message value from the backend by invoking a specific action (fetchStuffSample)
 1. The [action](https://github.com/DanskeBank/MicroEvent/blob/724edef9f3cbbe2cfa9bd654f219c73d611dcddb/TheDashboard/src/store/modules/mod_statistics.js#L24) invoke the [Backend API](https://github.com/DanskeBank/MicroEvent/blob/724edef9f3cbbe2cfa9bd654f219c73d611dcddb/TheDashboard/src/api/businessData.js#L10)
 1. The [API Gateway](https://github.com/DanskeBank/MicroEvent/blob/724edef9f3cbbe2cfa9bd654f219c73d611dcddb/APIGateway/api/swagger/swagger.yaml#L42), the component that exposes all APIs to the outer world, handles this specific request from TheDashboard web app
 1. The specific [Controller](https://github.com/DanskeBank/MicroEvent/blob/724edef9f3cbbe2cfa9bd654f219c73d611dcddb/APIGateway/api/controllers/stuff.js#L18) for that API does the following:

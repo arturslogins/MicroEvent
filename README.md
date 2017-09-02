@@ -68,9 +68,11 @@ We have done that in order to help you out with the APIs definition, but this is
 
 ![StuffMS Message](./Docs/ChallengeOne1.png)
 
-Moreover, the rest of the page is completely static.
+Moreover, the rest of the page and the right menu is completely static.
 
 ![StuffMS Message](./Docs/ChallengeOne2.png)
+
+---
 
 ![StuffMS Message](./Docs/ChallengeOne3.png)
 
@@ -86,13 +88,54 @@ Do you need [some help](./Docs/Hints/ChallengeOne.md)?
 
 A best practice when developing microservice architecture is to have [centralized logging](http://www.vinaysahni.com/best-practices-for-building-a-microservice-architecture#logging)
 
-### Third Challenge: Monitoring
+If you came this far you have the knowledge to get things done. No more hints will be provided.
+
+In order to get you started, we have prepared as in the excercise before the [UI](https://github.com/DanskeBank/MicroEvent/blob/master/TheDashboard/src/views/Logs.vue), [its state handling](https://github.com/DanskeBank/MicroEvent/blob/master/TheDashboard/src/store/modules/mod_logs.js) and the basic APIs at the [API Gateway](https://github.com/DanskeBank/MicroEvent/blob/e766ac0454841dde453f2b94f41647fbefcd4ec6/APIGateway/api/swagger/swagger.yaml#L114).
+
+However, you may agree with us that in a system like this there can be humongous amount of logs. We of course do not want to fetch them all at once, we may want to adopt an intelligent cache mechanism / algorithm, we may want to implement filters and maybe even search functionality.
+
+Or maybe not :smiley: Start implementing the basic requirements and keep it simple:
+
+1. Discuss a strategy for fetching logs data from the frontend and have a minimal cache mechanism at the API Gateway layer
+1. Implement a new microservice, LoggingMS, which own logs data and will keep them updated by subscribing to a single or multiple exchanges.
+
+The initial solution could be as simple as just showing the logs from last X minutes, and then you can improve it by implementing pagination, and so on.
+Come back to this excercise if you need any further challenge :wink:
+
+### Third Challenge: On your own with Monitoring
 
 [Centralized monitoring](http://www.vinaysahni.com/best-practices-for-building-a-microservice-architecture#monitoring) is also among best practices for this architecture.
 
+You need to monitor your system and you need to update ParsonsNet regularly on the state of your system.
+
+The only thing done here is a [UI Mockup](https://github.com/DanskeBank/MicroEvent/blob/master/TheDashboard/src/views/Microservices.vue) in order to show more or less the expected outcome.
+
+You will need to:
+
+1. Modify the View in order to render dynamic data
+1. Create the Vuex module for this section of the frontend application (state handling)
+1. Create the APIs needed at the API Gateway
+1. Discuss and implement caching at the API Gateway layer
+1. Keep the cache up to date by subscribing to the relative events
+1. Create a MonitoringMS (or argue why you do not need it) which will centralize monitoring. This may be also the microservice that will contact the ParsonsNet with updated information on the status of our local system
+
 ### Fourth Challenge: On your own with OpsChat
 
-Let's chat
+Of course all countries needs to cooperate. We want to build a chat system where anybody logged on on any specific local system are able to look at chat messages and post their own.
+
+We just created a (quite ugly) UI mockup of the chat. And that's it. You need to do the rest :stuck_out_tongue:
+
+1. Modify the View in order to make it nice and render dynamic data
+1. Create the Vuex module for this section of the frontend application (state handling)
+1. Create the APIs needed at the API Gateway
+1. Discuss and implement caching at the API Gateway layer
+1. Keep the cache up to date by subscribing to the relative events
+1. Create an OpsChatMS (or argue why you do not need it) which will centralize this functionality.
+1. Keep your state in synch with ParsonsNet.
+
+### ParsonsNet APIs
+
+[Coming Soon]
 
 ### Extra credits: Secure the system
 
@@ -100,6 +143,6 @@ There are quite some security issues in the current implementation. Why don't yo
 
 Even better, why don't you try to implement the solutions? :)
 
-## Tools and Libraries
+## Tools
 
-[draw.io](https://www.draw.io/)
+[draw.io](https://www.draw.io/) has been used for the graphs and technical drawings
