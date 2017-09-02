@@ -151,6 +151,14 @@ There are quite some security issues in the current implementation. Why don't yo
 
 Even better, why don't you try to implement the solutions? :)
 
-## Tools
+## Tools and Libraries
 
-[draw.io](https://www.draw.io/) has been used for the graphs and technical drawings
+* [Draw.io](https://www.draw.io/) has been used for the graphs and technical drawings.
+* [CoreUI](http://coreui.io/) has been used in order to make TheDashboard looks great.
+* [VueJS](https://vuejs.org/) has been chosen as Javascript framework for TheDashboard
+* [Vuex](https://vuex.vuejs.org/en/) has been chosen as state handling library for TheDashboard
+* [RabbitMQ](https://www.rabbitmq.com) is used as message broker.
+* [MongoDB](https://www.mongodb.com/) is where we store our data.
+* [Vagrant](https://www.vagrantup.com/) is used in order to virtualize the infrastructure needed for the system to run.
+* [NodeJS](https://nodejs.org) runs our backend.
+* [swagger-node](https://github.com/swagger-api/swagger-node) is used in order to implement the API Gateway.
