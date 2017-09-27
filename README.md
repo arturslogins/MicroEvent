@@ -144,7 +144,10 @@ And that's it. You need to do the rest :stuck_out_tongue:
 ### ParsonsNet APIs
 
 The ParsonsNetAPIs are published [here](./ParsonsNet/swagger.yaml).
-The hostname is: http://parsonsnetbe.azurewebsites.net/
+
+The host is reachable at: http://parsonsnetbe.azurewebsites.net/
+
+The source code is [here](https://github.com/DanskeBank/MicroeventPN)
 
 ### Extra credits: Secure the system
 
