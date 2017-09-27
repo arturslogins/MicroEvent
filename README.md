@@ -143,7 +143,8 @@ And that's it. You need to do the rest :stuck_out_tongue:
 
 ### ParsonsNet APIs
 
-[Coming Soon]
+The ParsonsNetAPIs are published [here](./ParsonsNet/swagger.yaml).
+The hostname is: http://parsonsnetbe.azurewebsites.net/
 
 ### Extra credits: Secure the system
 

@@ -1,0 +1,266 @@
+swagger: "2.0"
+info:
+  version: "0.0.1"
+  title: Hello World App
+# during dev, should point to your local machine
+host: localhost:10010
+basePath: /
+schemes:
+  # tip: remove http to make production-grade
+  - http
+  - https
+consumes:
+  - application/json
+produces:
+  - application/json
+paths:
+  /health:
+    x-swagger-router-controller: probe
+    get:
+      description: Returns 'OK' to the caller (if this thing works)
+      operationId: probe
+      responses:
+        "200":
+          description: Success
+          schema:
+            $ref: "#/definitions/HealthProbeResponse"
+        default:
+          description: Error
+          schema:
+            $ref: "#/definitions/ErrorResponse"
+  /enroll:
+    x-swagger-router-controller: enroll
+    post:
+      description: Start enrollment for a new team
+      operationId: initEnrollment
+      parameters:
+        - name: initEnrollment
+          in: body
+          description: Enrollment information
+          required: true
+          schema:
+            $ref: "#/definitions/Team"
+      responses:
+        "200":
+          description: Success
+          schema:
+            $ref: "#/definitions/HealthProbeResponse"
+        default:
+          description: Error
+          schema:
+            $ref: "#/definitions/ErrorResponse"
+  /enroll/{enrollId}:
+    x-swagger-router-controller: enroll
+    put:
+      description: Completes enrollment of a new team
+      operationId: finalizeEnrollment
+      parameters:
+        - name: enrollId
+          in: path
+          description: Numeric ID of the user to get
+          required: true
+          type: string
+          format: uuid
+      responses:
+        "200":
+          description: Success
+          schema:
+            $ref: "#/definitions/EnrollResponse"
+        default:
+          description: Error
+          schema:
+            $ref: "#/definitions/ErrorResponse"
+  /teams:
+    x-swagger-router-controller: teams
+    get:
+      description: Get all teams.
+      operationId: getTeams
+      responses:
+        "200":
+          description: Success
+          schema:
+            $ref: "#/definitions/TeamArray"
+        default:
+          description: Error
+          schema:
+            $ref: "#/definitions/ErrorResponse"
+  /monitoring/{teamId}:
+    x-swagger-router-controller: monitoring
+    post:
+      description: Push update on local system status. Data older than 5 minutes will be considered stale.
+      operationId: pushUpdate
+      parameters:
+        - name: teamId
+          in: path
+          description: Numeric ID of the team owning the monitor
+          required: true
+          type: string
+          format: uuid
+        - name: updateStatus
+          in: body
+          description: Update object generated from the local monitor containing microservices status
+          required: true
+          schema:
+            $ref: "#/definitions/MicroservicesStatus"
+      responses:
+        "200":
+          description: Success
+          schema:
+            $ref: "#/definitions/HealthProbeResponse"
+        default:
+          description: Error
+          schema:
+            $ref: "#/definitions/ErrorResponse"
+    get:
+      description: Get local system status.
+      operationId: getStatus
+      parameters:
+        - name: teamId
+          in: path
+          description: Numeric ID of the team owning the monitor
+          required: true
+          type: string
+          format: uuid
+      responses:
+        "200":
+          description: Success
+          schema:
+            $ref: "#/definitions/MicroservicesStatus"
+        default:
+          description: Error
+          schema:
+            $ref: "#/definitions/ErrorResponse"
+  /opschat:
+    x-swagger-router-controller: opschat
+    post:
+      description: Publish a new chat message.
+      operationId: publishMessage
+      parameters:
+        - name: message
+          in: body
+          description: Message that needs to be published
+          required: true
+          schema:
+            $ref: "#/definitions/OpsChatMessage"
+      responses:
+        "200":
+          description: Success
+          schema:
+            $ref: "#/definitions/HealthProbeResponse"
+        default:
+          description: Error
+          schema:
+            $ref: "#/definitions/ErrorResponse"
+  /opschat/{pageId}:
+    x-swagger-router-controller: opschat
+    get:
+      description: Get local system status.
+      operationId: getPublishedMessages
+      parameters:
+        - name: pageId
+          in: path
+          description: Numeric ID of the message page in which the caller it is interested
+          required: true
+          type: integer
+          format: int32
+          maximum: 10
+          minimum: 0
+      responses:
+        "200":
+          description: Success
+          schema:
+            $ref: "#/definitions/OpsChatMessageArray"
+        default:
+          description: Error
+          schema:
+            $ref: "#/definitions/ErrorResponse"
+  /swagger:
+    x-swagger-pipe: swagger_raw
+# complex objects have schema definitions
+definitions:
+  EnrollResponse:
+    required:
+      - apiKey
+      - teamId
+    properties:
+      apiKey:
+        type: string
+      teamId:
+        type: string
+  TeamArray:
+    required:
+      - teams
+    properties:
+      teams:
+        type: array
+        items:
+          $ref: "#/definitions/Team"
+  OpsChatMessageArray:
+    required:
+      - messages
+    properties:
+      messages:
+        type: array
+        items:
+          $ref: "#/definitions/OpsChatMessage"
+  OpsChatMessage:
+    required:
+      - from
+      - message
+    properties:
+      from:
+        type: string
+      message:
+        type: string
+      timestamp:
+        type: string
+        format: date-time
+  MicroservicesStatus:
+    required:
+      - microservices
+    properties:
+      microservices:
+        type: array
+        items:
+          type: object
+          required:
+            - name
+            - status
+          properties:
+            name:
+              type: string
+            status:
+              type: boolean
+            timestamp:
+              type: string
+              format: date-time
+  Team:
+    required:
+      - teamName
+      - teamMembers
+      - teamEmailAddress
+    properties:
+      id:
+        type: string
+      teamName:
+        type: string
+      teamMembers:
+        type: array
+        items:
+          type: string
+      teamEmailAddress:
+        type: string
+        format: email
+  HealthProbeResponse:
+    required:
+      - status
+    properties:
+      status:
+        type: string
+  ErrorResponse:
+    required:
+      - message
+    properties:
+      message:
+        type: string
+
