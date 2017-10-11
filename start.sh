@@ -42,6 +42,6 @@ fi
 
 trap 'kill %1; kill %2' SIGINT
 
-swagger project start APIGateway/ | tee logs/APIGateway.log | sed -e 's/^/[APIGateway] /' &
+swagger project start APIGateway/ >> logs/APIGateway.log &
 NODE_CONFIG_DIR=StuffMS/src/config bash -c "node StuffMS/src/app.js | tee logs/StuffMS.log | sed -e 's/^/[StuffMS] /'" &
 cd TheDashboard && npm run dev
