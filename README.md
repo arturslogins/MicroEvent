@@ -40,9 +40,7 @@ For more information see our [Infrastructure Docs](./Docs/Infrastructure.md)
 
 ## Getting Started
 
-If you are running Linux/Mac OS X you can just run `./start.sh`
-
-If you are instead running Windows you can run `./start.sh` from Git Bash (usually located at `C:\Program Files\Git\git-bash.exe`)
+Just run `docker-compose up` :)
 
 ## Challenges
 

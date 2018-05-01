@@ -1,0 +1,21 @@
+version: '3'
+services:
+  thedashboard:
+    build: TheDashboard/.
+    ports:
+       - "80:80"
+  stuffms:
+    build: StuffMS/.
+    links:
+      - rabbitmq
+  apigateway:
+    build: APIGateway/.
+    ports:
+       - "10010:10010"
+    links:
+      - rabbitmq
+      - mongodb
+  rabbitmq:
+    image: "rabbitmq"
+  mongodb:
+    image: "mongo"
